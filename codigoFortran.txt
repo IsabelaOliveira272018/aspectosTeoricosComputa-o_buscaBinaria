@@ -1,0 +1,45 @@
+//NP2
+//Isabela de Oliveira Barros
+
+program buscaBinaria
+
+    implicit none
+    integer, allocatable, dimension(:) ::  x
+    integer :: range, start, finish, mid
+    integer :: i, n, val
+
+    print *, 'Digite os numeros para a busca ?'
+    read *, N
+    allocate( x(N) )
+
+    do i = 1, n
+        READ *, x(i)
+    end do
+
+    print *, 'Diga um valor'
+    read *, VAL
+
+    start =  1
+    finish = N
+    range = finish - start
+    mid = (start + finish) /2
+
+    do while( x(mid) /= val .and. range >  0)
+      if (val > x(mid)) then
+        start = mid + 1
+      else
+        finish = mid - 1
+      end if
+      range = finish - start
+      mid = (start + finish)/2
+    end do
+
+    if( x(mid) /= val) then
+      print *, val, 'Valor não encontrado'
+    else
+      print *, 'Valor encontrado' , mid
+    end if
+
+    deallocate( x )
+
+end program buscaBinaria
